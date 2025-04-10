@@ -1,21 +1,24 @@
 import React from "react";
-import UpdateTask from "./UpdateTask";
-const Modal = ({ id }) => {
+
+const Modal = ({ id, name, component }) => {
+  const modalId = `modal_${id}`;
+
   return (
     <div>
       <button
-        className="btn btn-primary"
-        onClick={() => document.getElementById("my_modal_1").showModal()}
+        className="btn bg-blue-500 btn-sm text-white"
+        onClick={() => document.getElementById(modalId).showModal()}
       >
-        Update
+        {name}
       </button>
-      <dialog id="my_modal_1" className="modal ">
-        <div className="modal-box bg-amber-50 grid">
-          <div className="max-w-5xl m-auto">
-            <UpdateTask id={id} />
+
+      <dialog id={modalId} className="modal">
+        <div className="modal-box bg-white ">
+          <div className="w-full h-full flex flex-col justify-center items-center">
+            {component}
             <div className="modal-action">
-              <form method="dialog">
-                <button className="btn btn-secondary">Close</button>
+              <form method="dialog " className="flex justify-center">
+                <button className="btn btn-secondary  ">Close</button>
               </form>
             </div>
           </div>

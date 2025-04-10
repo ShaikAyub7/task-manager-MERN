@@ -1,11 +1,21 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const context = createContext();
 
 const AppContext = ({ children }) => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
+
+  const [user, setUser] = useState(null);
+
+  let decoded = null;
+  if (token && token !== "null") {
+    decoded = jwtDecode(token);
+  }
 
   const login = async ({ email, password }) => {
     try {
@@ -22,7 +32,11 @@ const AppContext = ({ children }) => {
         }
       );
       const token = data.data.token;
+      toast.success(data.data.message);
       localStorage.setItem("token", token);
+      toast.success("Login successful!");
+
+      return data;
     } catch (error) {
       console.log(error);
     }
@@ -39,10 +53,18 @@ const AppContext = ({ children }) => {
           },
         }
       );
+      toast.success("Registration successful!");
       console.log(data);
+      toast.success(data.data.message);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+    toast.success("Logout successful!");
   };
 
   const getTasks = async () => {
@@ -58,9 +80,14 @@ const AppContext = ({ children }) => {
       console.log(error);
     }
   };
+
   useEffect(() => {
-    getTasks();
-  }, []);
+    if (token) {
+      getTasks();
+      setUser(decoded);
+    }
+  }, [token]);
+
   const createTask = async ({ title, description }) => {
     try {
       const data = await axios.post(
@@ -74,6 +101,7 @@ const AppContext = ({ children }) => {
         }
       );
       getTasks();
+      toast.success("Task created successfully!");
     } catch (error) {
       console.log(error);
     }
@@ -97,7 +125,7 @@ const AppContext = ({ children }) => {
           task._id === id ? { ...task, description, status } : task
         )
       );
-
+      toast.success("Task updated successfully!");
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -116,11 +144,24 @@ const AppContext = ({ children }) => {
         }
       );
       getTasks();
+      toast.success("Task deleted successfully!");
     } catch (error) {
       console.log(error);
     }
   };
 
+  const todoTasks = useMemo(
+    () => data?.filter((task) => task.status === "todo"),
+    [data]
+  );
+  const inprogressTasks = useMemo(
+    () => data?.filter((task) => task.status === "inprogress"),
+    [data]
+  );
+  const completedTasks = useMemo(
+    () => data?.filter((task) => task.status === "completed"),
+    [data]
+  );
   return (
     <context.Provider
       value={{
@@ -131,6 +172,12 @@ const AppContext = ({ children }) => {
         getTasks,
         updateTask,
         deleteTask,
+        todoTasks,
+        inprogressTasks,
+        completedTasks,
+        user,
+        handleLogout,
+        decoded,
       }}
     >
       {children}

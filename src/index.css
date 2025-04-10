@@ -1,6 +1,21 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
 @plugin "daisyui" {
-  themes: light --default;
+  themes: all;
+}
+#root {
+  --scrollbar-thumb: #888;
+  --scrollbar-thumb-hover: #555;
+  --scrollbar-track: #f1f1f1;
+}
+
+/* Scrollbar styling */
+body::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
 }

@@ -4,7 +4,6 @@ import FormInput from "./FormInput";
 
 const UpdateTask = ({ id }) => {
   const { data, updateTask } = useGlobalContext();
-
   const statusEnum = ["todo", "inprogress", "completed"];
 
   const [description, setDescription] = useState("");
@@ -24,11 +23,11 @@ const UpdateTask = ({ id }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form flex-row gap-4 p-5 w-90">
+    <form onSubmit={handleSubmit} className="form flex-row gap-4 p-2 w-90">
       <FormInput
         label="Description"
         type="text"
-        style="mt-3 w-full"
+        style="mt-3 w-78 lg:w-full"
         name="description"
         value={description}
         func={(e) => setDescription(e.target.value)}
@@ -47,7 +46,7 @@ const UpdateTask = ({ id }) => {
         ))}
       </select>
 
-      <div className="mt-4 flex justify-center">
+      <div className="mt-4 flex justify-center ">
         <button type="submit" className="btn btn-primary">
           Update
         </button>

@@ -8,7 +8,9 @@ export const getTask = async (req, res) => {
         .json({ message: "Unauthorized: No user ID found" });
     }
 
-    const tasks = await Task.find({ userId: req.user.userId });
+    const tasks = await Task.find({ userId: req.user.userId }).sort({
+      createdAt: -1,
+    });
 
     if (!tasks.length) {
       return res.json({ message: "No tasks found for this user" });

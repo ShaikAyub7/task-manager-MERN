@@ -9,7 +9,7 @@ const FormInput = ({ label, name, func, type, style }) => {
       <input
         type={type}
         name={name}
-        className={`input bg-none $`}
+        className={`input bg-none `}
         onChange={func}
       />
     </div>

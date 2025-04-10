@@ -1,0 +1,46 @@
+{
+  "short_name": "TaskMe",
+  "name": "Task Management App",
+  "icons": [
+    {
+      "src": "/mark_13636389.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/login",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "description": "A task management application",
+  "orientation": "portrait-primary",
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://example.com"
+    }
+  ],
+  "prefer_related_applications": false,
+  "dir": "ltr",
+  "lang": "en-US",
+  "scope": "/login",
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["productivity", "task management"],
+  "version": "1.0.0",
+  "homepage": "https://localhost:5173/",
+  "author": "Shaik Ayub",
+  "license": "MIT",
+  "keywords": ["task", "management", "productivity"],
+  "manifest_version": 2
+}

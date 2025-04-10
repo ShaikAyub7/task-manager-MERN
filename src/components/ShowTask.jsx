@@ -1,6 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { useGlobalContext } from "./context/Context";
+import { FcTodoList } from "react-icons/fc";
+import { TiTick } from "react-icons/ti";
 
+import { GrInProgress } from "react-icons/gr";
 import TodoTasks from "./TodoTasks";
 import InprogressTasks from "./InprogressTask";
 import CompletedTasks from "./CompletedTasks";
@@ -8,34 +11,33 @@ import AllTasks from "./AllTasks";
 
 const ShowTask = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const { data } = useGlobalContext();
   const tabs = [
     {
-      name: "All Tasks",
+      name: "All ",
       content: <AllTasks />,
     },
     {
-      name: "Todo Tasks",
+      name: "Todo ",
       content: <TodoTasks />,
     },
     {
-      name: "Inprogress Tasks",
+      name: "In Progress",
       content: <InprogressTasks />,
     },
     {
-      name: "completed Tasks",
+      name: "Completed",
       content: <CompletedTasks />,
     },
   ];
 
   return (
-    <section className="">
-      <div className="flex space-x-1.5 lg:space-x-4 cursor-pointer">
+    <section className="p-1  rounded-lg ">
+      <div className="flex space-x-1.5 lg:space-x-4 cursor-pointer sticky top-0 z-100 bg-white p-2 shadow-md justify-center">
         {tabs.map((tab, index) => (
           <button
             key={index}
             onClick={() => setActiveTab(index)}
-            className={`px-4 py-2 border-b-2 font-bold cursor-pointer ${
+            className={`px-4 py-2 border-b font-medium text-sm cursor-pointer ${
               activeTab === index
                 ? "border-white dark:border-b-blue-900"
                 : "border-transparent"
