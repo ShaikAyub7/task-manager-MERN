@@ -59,7 +59,7 @@ const Card = ({ Tasks }) => {
             >
               <span className="text-gray-400 text-sm">Title</span>: {task.title}
             </h2>
-            <p className="mt-3 text-sm">
+            <p className="mt-3 text-sm text-gray-700">
               <span className="text-gray-400 text-sm">Description:</span>{" "}
               {isExpanded
                 ? task.description
