@@ -5,7 +5,7 @@ const AllTasks = () => {
   const { data, deleteTask, loading } = useGlobalContext();
 
   return (
-    <div className="mt-5 max-h-screen overflow-y-scroll scrollbar-hidden ">
+    <div className="mt-2 max-h-screen overflow-y-scroll scrollbar-hidden ">
       {loading ? (
         <div className="  grid place-items-center p-12 mt-4 ">
           <span className="loading loading-bars loading-sm"></span>

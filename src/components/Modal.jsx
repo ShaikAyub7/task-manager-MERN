@@ -13,13 +13,14 @@ const Modal = ({ id, name, component }) => {
       </button>
       <dialog id={modalId} className="modal">
         <div className="modal-box bg-white ">
-          <div className="w-full h-full flex flex-col justify-center items-center">
-            {component}
-            <div className="modal-action">
-              <form method="dialog " className="flex justify-center">
-                <button className="btn btn-secondary  ">Close</button>
-              </form>
-            </div>
+          <div className=" flex  justify-center items-center">{component}</div>
+          <div className="modal-action">
+            <button
+              className="btn btn-secondary"
+              onClick={() => document.getElementById(modalId).close()}
+            >
+              Close
+            </button>
           </div>
         </div>
       </dialog>

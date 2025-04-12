@@ -13,7 +13,13 @@ const TodoTasks = () => {
         </>
       ) : (
         <>
-          <p>No tasks</p>
+          <div className="grid place-items-center p-12 mt-4">
+            <span className="loading loading-bars loading-sm"></span>
+          </div>
+          <div className="text-center mt-4">
+            <h2 className="text-lg font-semibold">No tasks available</h2>
+            <p className="text-gray-500">Please create a new task.</p>
+          </div>
         </>
       )}
     </div>

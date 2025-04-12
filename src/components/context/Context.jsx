@@ -84,6 +84,7 @@ const AppContext = ({ children }) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     if (token) {
       getTasks();
       setUser(decoded);

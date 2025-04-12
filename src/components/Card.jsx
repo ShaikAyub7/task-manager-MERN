@@ -19,7 +19,7 @@ const Card = ({ Tasks, deleteTask }) => {
 
   return (
     <div>
-      {filteredTasks.map((task) => {
+      {filteredTasks?.map((task) => {
         const badgeClasses = [
           task.status === "todo" && "badge-secondary",
           task.status === "inprogress" && "badge-info",
@@ -31,7 +31,7 @@ const Card = ({ Tasks, deleteTask }) => {
         return (
           <div
             key={task._id}
-            className="card bg-white text-black max-w-xl m-auto mt-4 mb-2.5 p-3 shadow-md rounded-2xl hover:shadow-lg transition duration-300 ease-in-out"
+            className="card bg-white text-black max-w-xl m-auto mt-4 mb-2.5 p-3 shadow-md rounded-2xl hover:shadow-lg transition duration-300 ease-in-out border border-gray-300"
           >
             <h2
               className={`mt-2 ${
@@ -63,9 +63,9 @@ const Card = ({ Tasks, deleteTask }) => {
                 />
                 <button
                   type="button"
+                  id={task._id}
                   className="btn bg-red-500 btn-sm text-white"
                   onClick={() => {
-                    console.log("Deleting:", task._id);
                     return deleteTask(task._id);
                   }}
                 >

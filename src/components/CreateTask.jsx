@@ -1,9 +1,10 @@
+import CreateModal from "./CreateModal";
 import CreateTaskForm from "./CreateTaskForm";
 
 const CreateTask = () => {
   return (
-    <div className="p-4 max-w-4xl m-auto ">
-      <CreateTaskForm />
+    <div className=" max-w-4xl m-auto ">
+      <CreateModal component={<CreateTaskForm />} />
     </div>
   );
 };

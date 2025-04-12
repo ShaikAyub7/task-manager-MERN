@@ -4,10 +4,11 @@ import TodoTasks from "./TodoTasks";
 import InprogressTasks from "./InprogressTask";
 import CompletedTasks from "./CompletedTasks";
 import AllTasks from "./AllTasks";
+import Error from "./Error";
 
 const ShowTask = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const { loading } = useGlobalContext();
+  const { loading, data } = useGlobalContext();
   const tabs = [
     {
       name: "All ",
@@ -28,8 +29,8 @@ const ShowTask = () => {
   ];
 
   return (
-    <section className="p-4  rounded-lg ">
-      <div className="flex space-x-1.5 lg:space-x-4 cursor-pointer sticky top-0 z-100 bg-white p-2 shadow-md justify-center rounded-2xl">
+    <section className=" rounded-lg ">
+      <div className="flex space-x-1.5 lg:space-x-4 cursor-pointer sticky top-0 z-100 bg-white p-2 shadow-md justify-center rounded-lg">
         {tabs.map((tab, index) => (
           <button
             key={index}
@@ -47,13 +48,15 @@ const ShowTask = () => {
 
       <>
         <div className="grid grid-cols-1">
-          {loading ? (
-            <div className="  grid place-items-center p-12 mt-4 ">
-              <span className="loading loading-bars loading-sm"></span>
-            </div>
+          {data ? (
+            <>
+              <div className=" p-4">{tabs[activeTab].content}</div>
+            </>
           ) : (
-            <div className="mt-1">{tabs[activeTab].content}</div>
-          )}
+            <>
+              <Error />
+            </>
+          )}{" "}
         </div>
       </>
     </section>

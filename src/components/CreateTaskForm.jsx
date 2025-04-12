@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../components/context/Context";
 import FormInput from "./FormInput";
+import { toast } from "react-toastify";
 
 const CreateTaskForm = () => {
   const { createTask, getTasks } = useGlobalContext();
@@ -10,6 +11,9 @@ const CreateTaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!title || !description) {
+      return toast.error("Please fill in all fields");
+    }
     createTask({ title, description });
     getTasks();
   };

@@ -23,7 +23,7 @@ const UpdateTask = ({ id }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form flex-row gap-4 p-2 w-90">
+    <form onSubmit={handleSubmit} className="form  gap-4 p-2">
       <FormInput
         label="Description"
         type="text"
@@ -37,7 +37,7 @@ const UpdateTask = ({ id }) => {
         name="status"
         value={status}
         onChange={(e) => setStatus(e.target.value)}
-        className="border rounded-lg p-2 mt-2"
+        className="border border-gray-300 rounded-lg p-2 mt-2 ml-3.5"
       >
         {statusEnum.map((statusItem) => (
           <option value={statusItem} key={statusItem}>
