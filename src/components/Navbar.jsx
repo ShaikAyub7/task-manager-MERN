@@ -2,7 +2,8 @@ import React from "react";
 import { useGlobalContext } from "./context/Context";
 import { Link } from "react-router-dom";
 const Navbar = () => {
-  const { user, handleLogout, decoded } = useGlobalContext();
+  const { user, handleLogout, decoded, setSearchTerm, searchTerm } =
+    useGlobalContext();
   return (
     <>
       <div className="navbar bg-base-100 shadow-sm">
@@ -14,6 +15,7 @@ const Navbar = () => {
             type="text"
             placeholder="Search"
             className="input input-bordered w-24 md:w-auto"
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           {user ? (
             <div className="dropdown dropdown-end">

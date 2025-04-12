@@ -9,8 +9,8 @@ const context = createContext();
 const AppContext = ({ children }) => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
-
   const [user, setUser] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   let decoded = null;
   if (token && token !== "null") {
@@ -162,6 +162,7 @@ const AppContext = ({ children }) => {
     () => data?.filter((task) => task.status === "completed"),
     [data]
   );
+
   return (
     <context.Provider
       value={{
@@ -176,8 +177,11 @@ const AppContext = ({ children }) => {
         inprogressTasks,
         completedTasks,
         user,
+        token,
         handleLogout,
         decoded,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       {children}

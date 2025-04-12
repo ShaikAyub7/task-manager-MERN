@@ -23,36 +23,35 @@ const Register = () => {
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="card lg:w-96 md:w-96 p-4 bg-base-100 shadow-lg flex m-auto flex-col gap-y-4"
+        className="card lg:w-96 md:w-96 p-3 bg-base-100 shadow-lg flex m-auto flex-col gap-y-4"
       >
         <h4 className="text-center text-3xl font-bold">Register</h4>
         <FormInput
           type={"name"}
           label={"name"}
           name="name"
+          style={"w-full text-center  p-1 pl-4"}
           func={(e) => setName(e.target.value)}
         />
         <FormInput
           type={"email"}
           label={"email"}
           name="email"
+          style={"w-full text-center  pl-4"}
           func={(e) => setEmail(e.target.value)}
         />
         <FormInput
           type={"password"}
           label={"password"}
           name="password"
+          style={"w-full text-center  p-1 pl-4"}
           func={(e) => setPassword(e.target.value)}
         />
         <div className=" mt-4 ">
-          {/* <SubmitBtn text={"Login"} /> */}
-          <button type="submit" className="btn btn-primary">
-            Submit
+          <button type="submit" className="btn btn-primary w-full">
+            Register
           </button>
         </div>
-        <button className="btn btn-secondary">
-          <Link to={"/"}>Guest</Link>
-        </button>
 
         <p className="text-center">
           Already a member ?{" "}

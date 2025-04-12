@@ -1,13 +1,25 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import Modal from "./MOdal";
 import UpdateTask from "./UpdateTask";
 import { MdOutlineDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
+import { useGlobalContext } from "./context/Context";
 
 const Card = ({ Tasks, deleteTask }) => {
+  const { searchTerm } = useGlobalContext();
+
+  const filteredTasks = useMemo(() => {
+    if (!searchTerm.trim()) return Tasks;
+    return Tasks.filter(
+      (task) =>
+        task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        task.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [Tasks, searchTerm]);
+
   return (
     <div>
-      {Tasks?.map((task) => {
+      {filteredTasks.map((task) => {
         const badgeClasses = [
           task.status === "todo" && "badge-secondary",
           task.status === "inprogress" && "badge-info",
@@ -15,21 +27,21 @@ const Card = ({ Tasks, deleteTask }) => {
         ]
           .filter(Boolean)
           .join(" ");
+
         return (
           <div
             key={task._id}
-            className="card bg-white text-black max-w-xl m-auto mt-4 mb-2.5 p-3  shadow-md rounded-2xl hover:shadow-lg transition duration-300 ease-in-out"
+            className="card bg-white text-black max-w-xl m-auto mt-4 mb-2.5 p-3 shadow-md rounded-2xl hover:shadow-lg transition duration-300 ease-in-out"
           >
             <h2
               className={`mt-2 ${
                 task.status === "completed" ? "line-through decoration-0" : ""
               } text-sm`}
             >
-              <span className="text-gray-400 text-sm">Title</span> :{" "}
-              {task.title}
+              <span className="text-gray-400 text-sm">Title</span>: {task.title}
             </h2>
             <p className="mt-3 text-sm">
-              <span className="text-gray-400 text-sm">Description : </span>
+              <span className="text-gray-400 text-sm">Description:</span>{" "}
               {task.description}
             </p>
             <div className={`badge badge-soft mt-2.5 text-sm ${badgeClasses}`}>
@@ -38,7 +50,10 @@ const Card = ({ Tasks, deleteTask }) => {
 
             <div className="flex mt-1 gap-2.5 justify-between p-2">
               <div className="flex items-end font-light">
-                <small>createdAt :{task.createdAt}</small>
+                <small className="text-gray-800 ">
+                  <span className="text-gray-400">createdAt:</span>{" "}
+                  {task.createdAt?.slice(0, 10)}
+                </small>
               </div>
               <div className="flex gap-2.5">
                 <Modal

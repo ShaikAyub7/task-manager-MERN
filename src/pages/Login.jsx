@@ -34,23 +34,21 @@ const Login = () => {
           type={"email"}
           label={"email"}
           name="email"
+          style={"w-full text-center  p-3"}
           func={(e) => setEmail(e.target.value)}
         />
         <FormInput
           type={"password"}
           label={"password"}
           name="password"
+          style={"w-full text-center  p-3"}
           func={(e) => setPassword(e.target.value)}
         />
-        <div className=" mt-4 ">
-          {/* <SubmitBtn text={"Login"} /> */}
-          <button type="submit" className="btn btn-primary">
-            Submit
+        <div className=" mt-4 w-full block">
+          <button type="submit" className="btn btn-primary w-full">
+            Login
           </button>
         </div>
-        <button className="btn btn-secondary">
-          <Link to={"/"}>Guest</Link>
-        </button>
 
         <p className="text-center">
           Not at member ?{" "}
