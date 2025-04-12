@@ -23,11 +23,14 @@ const UpdateTask = ({ id }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form  gap-4 p-2">
+    <form
+      onSubmit={handleSubmit}
+      className="form flex flex-col md:flex-row md:items-center gap-4 p-4 w-full justify-center"
+    >
       <FormInput
         label="Description"
         type="text"
-        style="mt-3 w-78 lg:w-full"
+        style="w-full md:w-72 rounded-lg"
         name="description"
         value={description}
         func={(e) => setDescription(e.target.value)}
@@ -37,7 +40,7 @@ const UpdateTask = ({ id }) => {
         name="status"
         value={status}
         onChange={(e) => setStatus(e.target.value)}
-        className="border border-gray-300 rounded-lg p-2 mt-2 ml-3.5"
+        className="border border-gray-300 rounded-lg p-2 mt-5 w-full md:w-48"
       >
         {statusEnum.map((statusItem) => (
           <option value={statusItem} key={statusItem}>
@@ -46,11 +49,12 @@ const UpdateTask = ({ id }) => {
         ))}
       </select>
 
-      <div className="mt-4 flex justify-center ">
-        <button type="submit" className="btn btn-primary">
-          Update
-        </button>
-      </div>
+      <button
+        type="submit"
+        className="btn btn-primary w-full md:w-auto px-6 mt-5"
+      >
+        Update
+      </button>
     </form>
   );
 };
