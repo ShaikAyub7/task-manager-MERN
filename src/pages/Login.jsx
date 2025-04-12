@@ -16,8 +16,8 @@ const Login = () => {
       login({ email, password });
       setEmail("");
       setPassword("");
-      navigation("/");
       toast.success("Login successful!");
+      return navigation("/");
     } catch (error) {
       toast.error("Login failed, please try again.");
     }

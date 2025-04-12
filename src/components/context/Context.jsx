@@ -92,7 +92,7 @@ const AppContext = ({ children }) => {
   const createTask = async ({ title, description }) => {
     try {
       const data = await axios.post(
-        `${url}/api/task/create`,
+        `${url}/api/task/createtask`,
         { title, description },
         {
           headers: {
@@ -141,8 +141,9 @@ const AppContext = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      getTasks();
       toast.success("Task deleted successfully!");
+      getTasks();
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
