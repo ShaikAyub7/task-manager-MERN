@@ -50,7 +50,7 @@ const ShowTask = () => {
         <div className="grid grid-cols-1">
           {data ? (
             <>
-              <div className=" p-4 mb-5">{tabs[activeTab].content}</div>
+              <div className=" p-4 mb-8">{tabs[activeTab].content}</div>
             </>
           ) : (
             <>
