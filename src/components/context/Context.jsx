@@ -36,7 +36,6 @@ const AppContext = ({ children }) => {
       const token = data.data.token;
       toast.success(data.data.message);
       localStorage.setItem("token", token);
-      toast.success("Login successful!");
 
       return data;
     } catch (error) {
