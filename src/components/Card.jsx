@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import Modal from "./MOdal";
+import Modal from "./Modal";
 import UpdateTask from "./UpdateTask";
 import { MdOutlineDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
