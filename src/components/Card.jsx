@@ -20,6 +20,7 @@ const Card = ({ Tasks, deleteTask }) => {
   return (
     <div>
       {filteredTasks?.map((task) => {
+        console.log(task);
         const badgeClasses = [
           task.status === "todo" && "badge-secondary",
           task.status === "inprogress" && "badge-info",

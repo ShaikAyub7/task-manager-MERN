@@ -138,16 +138,25 @@ const AppContext = ({ children }) => {
 
   const deleteTask = async (id) => {
     try {
-      const data = await axios.delete(`${url}/api/task/delete/${id}`, {
+      const task = data.find((task) => task._id === id);
+
+      if (task?.status === "completed") {
+        toast.error("Cannot delete a completed task!");
+        return;
+      }
+
+      const response = await axios.delete(`${url}/api/task/delete/${id}`, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
+
       toast.success("Task deleted successfully!");
       getTasks();
     } catch (error) {
       console.log(error);
+      toast.error("Error deleting task.");
     }
   };
 
