@@ -4,11 +4,16 @@ import Register from "./pages/Register";
 import AppContext from "./components/context/Context";
 import Home from "./pages/Home";
 import { ToastContainer } from "react-toastify";
+import ProtectedRoute from "./components/ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",

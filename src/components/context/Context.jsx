@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 const context = createContext();
+const url = ` https://task-manager-mern-rmn3.onrender.com`;
 
 const AppContext = ({ children }) => {
   const [data, setData] = useState([]);
@@ -20,7 +21,7 @@ const AppContext = ({ children }) => {
   const login = async ({ email, password }) => {
     try {
       const data = await axios.post(
-        "http://localhost:5000/login",
+        `${url}/login`,
         {
           email,
           password,
@@ -45,7 +46,7 @@ const AppContext = ({ children }) => {
   const register = async ({ name, email, password }) => {
     try {
       const data = await axios.post(
-        "http://localhost:5000/register",
+        `${url}/register`,
         { name, email, password },
         {
           headers: {
@@ -69,7 +70,7 @@ const AppContext = ({ children }) => {
 
   const getTasks = async () => {
     try {
-      const data = await axios.get("http://localhost:5000/api/task/", {
+      const data = await axios.get(`${url}/api/task/`, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
@@ -91,7 +92,7 @@ const AppContext = ({ children }) => {
   const createTask = async ({ title, description }) => {
     try {
       const data = await axios.post(
-        "http://localhost:5000/api/task/createtask",
+        `${url}/api/task/create`,
         { title, description },
         {
           headers: {
@@ -110,7 +111,7 @@ const AppContext = ({ children }) => {
   const updateTask = async ({ description, status, id }) => {
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/task/update/${id}`,
+        `${url}/api/task/update/${id}`,
         { description, status },
         {
           headers: {
@@ -134,15 +135,12 @@ const AppContext = ({ children }) => {
 
   const deleteTask = async (id) => {
     try {
-      const data = await axios.delete(
-        `http://localhost:5000/api/task/delete/${id}`,
-        {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const data = await axios.delete(`${url}/api/task/delete/${id}`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       getTasks();
       toast.success("Task deleted successfully!");
     } catch (error) {
