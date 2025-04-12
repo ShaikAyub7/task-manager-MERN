@@ -11,6 +11,7 @@ const AppContext = ({ children }) => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
   let decoded = null;
@@ -86,6 +87,7 @@ const AppContext = ({ children }) => {
     if (token) {
       getTasks();
       setUser(decoded);
+      setLoading(false);
     }
   }, [token]);
 
@@ -180,6 +182,7 @@ const AppContext = ({ children }) => {
         handleLogout,
         decoded,
         searchTerm,
+        loading,
         setSearchTerm,
       }}
     >

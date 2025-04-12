@@ -1,9 +1,5 @@
 import React, { useMemo, useState } from "react";
 import { useGlobalContext } from "./context/Context";
-import { FcTodoList } from "react-icons/fc";
-import { TiTick } from "react-icons/ti";
-
-import { GrInProgress } from "react-icons/gr";
 import TodoTasks from "./TodoTasks";
 import InprogressTasks from "./InprogressTask";
 import CompletedTasks from "./CompletedTasks";
@@ -11,6 +7,7 @@ import AllTasks from "./AllTasks";
 
 const ShowTask = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { loading } = useGlobalContext();
   const tabs = [
     {
       name: "All ",
@@ -50,7 +47,13 @@ const ShowTask = () => {
 
       <>
         <div className="grid grid-cols-1">
-          <div className="mt-1">{tabs[activeTab].content}</div>
+          {loading ? (
+            <div className="  grid place-items-center p-12 mt-4 ">
+              <span className="loading loading-bars loading-sm"></span>
+            </div>
+          ) : (
+            <div className="mt-1">{tabs[activeTab].content}</div>
+          )}
         </div>
       </>
     </section>
