@@ -11,7 +11,6 @@ const Modal = ({ id, name, component }) => {
       >
         {name}
       </button>
-
       <dialog id={modalId} className="modal">
         <div className="modal-box bg-white ">
           <div className="w-full h-full flex flex-col justify-center items-center">

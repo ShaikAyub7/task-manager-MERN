@@ -145,7 +145,6 @@ const AppContext = ({ children }) => {
       });
       toast.success("Task deleted successfully!");
       getTasks();
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

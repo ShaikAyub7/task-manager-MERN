@@ -64,7 +64,10 @@ const Card = ({ Tasks, deleteTask }) => {
                 <button
                   type="button"
                   className="btn bg-red-500 btn-sm text-white"
-                  onClick={() => deleteTask(task._id)}
+                  onClick={() => {
+                    console.log("Deleting:", task._id);
+                    return deleteTask(task._id);
+                  }}
                 >
                   <MdOutlineDelete />
                 </button>
