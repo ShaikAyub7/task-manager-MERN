@@ -76,10 +76,15 @@ export const deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const deleteTask = await Task.findOneAndDelete(id);
+    const deletedTask = await Task.findOneAndDelete({ _id: id });
 
-    res.json({ message: "task deleted", deletedTask: deleteTask });
+    if (!deletedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+
+    res.json({ message: "Task deleted", deletedTask });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };

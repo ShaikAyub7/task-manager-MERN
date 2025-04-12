@@ -3,7 +3,7 @@ import { useGlobalContext } from "../components/context/Context";
 import Card from "./Card";
 
 const InprogressTasks = () => {
-  const { data, deleteTask, inprogressTasks } = useGlobalContext();
+  const { data, deleteTask, inprogressTasks, loading } = useGlobalContext();
 
   return (
     <div className="mt-5 overflow-y-scroll max-h-screen scrollbar-hidden">

@@ -78,6 +78,7 @@ const AppContext = ({ children }) => {
         },
       });
       setData(data.data.tasks);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -145,12 +146,13 @@ const AppContext = ({ children }) => {
         return;
       }
 
-      const response = await axios.delete(`${url}/api/task/delete/${id}`, {
+      const response = await axios.delete(`${url}/api/task/delete/task/${id}`, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
+      setData((prev) => prev.filter((t) => t._id !== id));
 
       toast.success(`Task deleted successfully! ${id}`);
       getTasks();

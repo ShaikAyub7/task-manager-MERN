@@ -5,9 +5,17 @@ import { MdOutlineDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { useGlobalContext } from "./context/Context";
 
-const Card = ({ Tasks, deleteTask }) => {
-  const { searchTerm } = useGlobalContext();
+const Card = ({ Tasks }) => {
+  const { searchTerm, loading, deleteTask } = useGlobalContext();
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center mt-10">
+        <p>loading</p>
+        <span className="loading loading-spinner loading-md text-primary"></span>
+      </div>
+    );
+  }
   const filteredTasks = useMemo(() => {
     if (!searchTerm.trim()) return Tasks;
     return Tasks.filter(
@@ -34,6 +42,7 @@ const Card = ({ Tasks, deleteTask }) => {
             key={task._id}
             className="card bg-white text-black max-w-xl m-auto mt-4 mb-2.5 p-3 shadow-md rounded-2xl hover:shadow-lg transition duration-300 ease-in-out border border-gray-300"
           >
+            <p>{task._id}</p>
             <h2
               className={`mt-2 ${
                 task.status === "completed" ? "line-through decoration-0" : ""
@@ -67,7 +76,7 @@ const Card = ({ Tasks, deleteTask }) => {
                   id={task._id}
                   className="btn bg-red-500 btn-sm text-white"
                   onClick={() => {
-                    return deleteTask(task._id);
+                    deleteTask(task._id);
                   }}
                 >
                   <MdOutlineDelete />

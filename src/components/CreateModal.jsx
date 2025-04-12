@@ -7,7 +7,7 @@ const Modal = ({ id, name, component }) => {
   return (
     <div>
       <button
-        className="btn bg-blue-500 btn-sm text-white fixed bottom-6 right-5 z-40000000  p-6 rounded-xl"
+        className="btn bg-blue-500 btn-sm text-white fixed bottom-6 right-5 z-40000000  p-6 rounded-xl shadow-md"
         onClick={() => document.getElementById(modalId).showModal()}
       >
         <IoAddSharp className="text-2xl" />
