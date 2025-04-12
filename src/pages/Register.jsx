@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../components/context/Context";
 import { Link, redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FormInput from "../components/FormInput";
 
 const Register = () => {
   const { register } = useGlobalContext();
-
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    register({ name, email, password });
+    await register({ name, email, password });
     setName("");
     setEmail("");
     setPassword("");
-    return redirect("/login");
+    navigate("/login");
   };
   return (
     <section className="grid h-screen place-items-center">
