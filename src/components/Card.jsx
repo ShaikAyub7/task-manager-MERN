@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Modal from "./Modal";
 import UpdateTask from "./UpdateTask";
 import { MdOutlineDelete } from "react-icons/md";
@@ -7,6 +7,7 @@ import { useGlobalContext } from "./context/Context";
 
 const Card = ({ Tasks }) => {
   const { searchTerm, loading, deleteTask } = useGlobalContext();
+  const [expanded, setExpanded] = useState({});
 
   if (loading) {
     return (
@@ -16,6 +17,7 @@ const Card = ({ Tasks }) => {
       </div>
     );
   }
+
   const filteredTasks = useMemo(() => {
     if (!searchTerm.trim()) return Tasks;
     return Tasks.filter(
@@ -25,10 +27,16 @@ const Card = ({ Tasks }) => {
     );
   }, [Tasks, searchTerm]);
 
+  const toggleText = (id) => {
+    setExpanded((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
   return (
     <div>
       {filteredTasks?.map((task) => {
-        console.log(task);
         const badgeClasses = [
           task.status === "todo" && "badge-secondary",
           task.status === "inprogress" && "badge-info",
@@ -36,6 +44,8 @@ const Card = ({ Tasks }) => {
         ]
           .filter(Boolean)
           .join(" ");
+
+        const isExpanded = expanded[task._id];
 
         return (
           <div
@@ -51,7 +61,17 @@ const Card = ({ Tasks }) => {
             </h2>
             <p className="mt-3 text-sm">
               <span className="text-gray-400 text-sm">Description:</span>{" "}
-              {task.description}
+              {isExpanded
+                ? task.description
+                : `${task.description.slice(0, 100)}...`}
+              {task.description.length > 100 && (
+                <button
+                  className="ml-2 text-blue-400  text-xs font-medium"
+                  onClick={() => toggleText(task._id)}
+                >
+                  {isExpanded ? " less" : "more"}
+                </button>
+              )}
             </p>
             <div className={`badge badge-soft mt-2.5 text-sm ${badgeClasses}`}>
               {task.status}
@@ -59,7 +79,7 @@ const Card = ({ Tasks }) => {
 
             <div className="flex mt-1 gap-2.5 justify-between p-2">
               <div className="flex items-end font-light">
-                <small className="text-gray-800 ">
+                <small className="text-gray-800">
                   <span className="text-gray-400">createdAt:</span>{" "}
                   {task.createdAt?.slice(0, 10)}
                 </small>
@@ -74,9 +94,7 @@ const Card = ({ Tasks }) => {
                   type="button"
                   id={task._id}
                   className="btn bg-red-500 btn-sm text-white"
-                  onClick={() => {
-                    deleteTask(task._id);
-                  }}
+                  onClick={() => deleteTask(task._id)}
                 >
                   <MdOutlineDelete />
                 </button>
