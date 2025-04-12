@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
 import { useGlobalContext } from "../components/context/Context";
-import Modal from "./MOdal";
 import Card from "./Card";
 
 const CompletedTasks = () => {
