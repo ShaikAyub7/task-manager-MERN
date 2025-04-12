@@ -18,28 +18,25 @@ const AppContext = ({ children }) => {
   if (token && token !== "null") {
     decoded = jwtDecode(token);
   }
-
   const login = async ({ email, password }) => {
     try {
-      const data = await axios.post(
+      const response = await axios.post(
         `${url}/login`,
-        {
-          email,
-          password,
-        },
+        { email, password },
         {
           headers: {
             Accept: "application/json",
           },
         }
       );
-      const token = data.data.token;
-      toast.success(data.data.message);
+      const token = response.data.token;
       localStorage.setItem("token", token);
-
-      return data;
+      toast.success(response.data.message);
+      setUser(jwtDecode(token));
+      return true;
     } catch (error) {
-      console.log(error);
+      toast.error("Invalid credentials");
+      throw error;
     }
   };
 

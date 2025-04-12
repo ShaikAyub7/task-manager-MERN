@@ -10,18 +10,20 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      login({ email, password });
+      await login({ email, password });
+      toast.success("Login successful!");
       setEmail("");
       setPassword("");
       navigation("/");
-      toast.success("Login successful!");
     } catch (error) {
+      console.error(error);
       toast.error("Login failed, please try again.");
     }
   };
+
   return (
     <section className="grid h-screen place-items-center">
       <form
