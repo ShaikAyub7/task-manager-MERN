@@ -1,5 +1,4 @@
 import CreateTaskForm from "./CreateTaskForm";
-import Modal from "./MOdal";
 
 const CreateTask = () => {
   return (
