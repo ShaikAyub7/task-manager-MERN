@@ -42,7 +42,6 @@ const Card = ({ Tasks }) => {
             key={task._id}
             className="card bg-white text-black max-w-xl m-auto mt-4 mb-2.5 p-3 shadow-md rounded-2xl hover:shadow-lg transition duration-300 ease-in-out border border-gray-300"
           >
-            <p>{task._id}</p>
             <h2
               className={`mt-2 ${
                 task.status === "completed" ? "line-through decoration-0" : ""

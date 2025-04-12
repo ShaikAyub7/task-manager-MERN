@@ -154,7 +154,7 @@ const AppContext = ({ children }) => {
       });
       setData((prev) => prev.filter((t) => t._id !== id));
 
-      toast.success(`Task deleted successfully! ${id}`);
+      toast.success(`Task deleted successfully! `);
       getTasks();
     } catch (error) {
       console.log(error);
