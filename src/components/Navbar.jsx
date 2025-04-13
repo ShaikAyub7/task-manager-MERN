@@ -12,9 +12,7 @@ const Navbar = () => {
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Task Me</a>
         </div>
-        <div>
-          <Theme />
-        </div>
+        <div>{/* <Theme /> */}</div>
         <div className="flex gap-2">
           <input
             type="text"

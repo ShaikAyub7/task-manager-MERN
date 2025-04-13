@@ -6,7 +6,7 @@ const Theme = () => {
 
   const themes = {
     light: "light",
-    dark: "dark",
+    dark: "synthwave",
   };
   const handleThemeChange = (e) => {
     const { light, dark } = themes;
