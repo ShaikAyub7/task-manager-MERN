@@ -13,7 +13,7 @@ const AllTasks = () => {
           <span className="badge badge-primary badge-outline ml-2">0</span>
         )}
       </div>
-      {loading ? (
+      {data.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
           <span className="loading loading-spinner loading-md text-primary"></span>
         </div>

@@ -29,8 +29,8 @@ const ShowTask = () => {
   ];
 
   return (
-    <section className=" rounded-lg ">
-      <div className="flex space-x-1.5 lg:space-x-4 cursor-pointer sticky top-0 z-100 bg-white p-2 shadow-md justify-center rounded-lg">
+    <section className=" rounded-bl-2xl ">
+      <div className="flex space-x-1.5 lg:space-x-4 cursor-pointer sticky top-0 z-100 bg-white p-2 shadow-md justify-center  ">
         {tabs.map((tab, index) => (
           <button
             key={index}

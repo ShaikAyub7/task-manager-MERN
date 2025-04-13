@@ -67,6 +67,7 @@ const AppContext = ({ children }) => {
 
   const getTasks = async () => {
     try {
+      setLoading(true);
       const data = await axios.get(`${url}/api/task/`, {
         headers: {
           Accept: "application/json",
@@ -74,7 +75,6 @@ const AppContext = ({ children }) => {
         },
       });
       setData(data.data.tasks);
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -83,9 +83,9 @@ const AppContext = ({ children }) => {
   useEffect(() => {
     setLoading(true);
     if (token) {
-      getTasks();
       setUser(decoded);
       setLoading(false);
+      getTasks();
     }
   }, [token]);
 

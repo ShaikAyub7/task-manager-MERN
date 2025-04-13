@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "./context/Context";
 import { Link } from "react-router-dom";
+import Theme from "./Theme";
 const Navbar = () => {
   const { user, handleLogout, decoded, setSearchTerm, searchTerm } =
     useGlobalContext();
+
   return (
     <>
       <div className="navbar bg-base-100 shadow-sm">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Task Me</a>
+        </div>
+        <div>
+          <Theme />
         </div>
         <div className="flex gap-2">
           <input

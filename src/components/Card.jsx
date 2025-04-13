@@ -9,15 +9,6 @@ const Card = ({ Tasks }) => {
   const { searchTerm, loading, deleteTask } = useGlobalContext();
   const [expanded, setExpanded] = useState({});
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center mt-10">
-        <p>loading</p>
-        <span className="loading loading-spinner loading-md text-primary"></span>
-      </div>
-    );
-  }
-
   const filteredTasks = useMemo(() => {
     if (!searchTerm.trim()) return Tasks;
     return Tasks.filter(
