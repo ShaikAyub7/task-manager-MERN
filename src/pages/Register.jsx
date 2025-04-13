@@ -19,6 +19,9 @@ const Register = () => {
     setPassword("");
     navigate("/login");
   };
+
+
+  
   return (
     <section className="grid h-screen place-items-center">
       <form
