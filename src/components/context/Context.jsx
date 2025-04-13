@@ -127,7 +127,6 @@ const AppContext = ({ children }) => {
         )
       );
       toast.success("Task updated successfully!");
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

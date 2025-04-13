@@ -3,7 +3,6 @@ import { useGlobalContext } from "./context/Context";
 import Card from "./Card";
 const AllTasks = () => {
   const { data, loading } = useGlobalContext();
-  console.log(data);
   return (
     <div className="mt-2 max-h-screen overflow-y-scroll scrollbar-hidden m-auto ">
       <div className="stat-title m-auto flex justify-center items-center">
