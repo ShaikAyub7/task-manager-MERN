@@ -37,9 +37,9 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-2xl"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-2xl border border-gray-400"
               >
-                <li className="border border-gray-400">
+                <li className="">
                   <Link to={"/login"} onClick={handleLogout}>
                     Logout
                   </Link>
