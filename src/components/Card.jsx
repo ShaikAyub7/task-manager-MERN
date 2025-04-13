@@ -64,7 +64,7 @@ const Card = ({ Tasks }) => {
                 </button>
               )}
             </p>
-            <div className={`badge badge-soft mt-2.5 text-sm ${badgeClasses}`}>
+            <div className={`badge badge-soft mt-3 text-xs ${badgeClasses}`}>
               {task.status}
             </div>
 

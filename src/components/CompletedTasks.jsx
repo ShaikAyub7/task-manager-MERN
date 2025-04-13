@@ -7,7 +7,15 @@ const CompletedTasks = () => {
 
   return (
     <div className="mt-5 overflow-y-scroll max-h-screen scrollbar-hidden">
-      {data ? (
+      <div className="stat-title m-auto flex justify-center items-center">
+        Total Tasks{" "}
+        {completedTasks && completedTasks.length > 0 ? (
+          <span className="ml-1 text-gray-500"> {completedTasks.length}</span>
+        ) : (
+          <span className="badge badge-primary badge-outline ml-2">0</span>
+        )}
+      </div>
+      {completedTasks && completedTasks.length > 0 ? (
         <>
           <Card Tasks={completedTasks} deleteTask={deleteTask} />
         </>
