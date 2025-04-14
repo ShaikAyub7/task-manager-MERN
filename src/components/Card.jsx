@@ -60,7 +60,7 @@ const Card = ({ Tasks }) => {
                   className="ml-2 text-blue-400  text-xs font-medium"
                   onClick={() => toggleText(task._id)}
                 >
-                  {isExpanded ? " less" : "more"}
+                  {isExpanded ? "Show less" : "more"}
                 </button>
               )}
             </p>
