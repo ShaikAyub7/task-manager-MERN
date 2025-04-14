@@ -67,7 +67,6 @@ const Card = ({ Tasks }) => {
             <div className={`badge badge-soft mt-3 text-xs ${badgeClasses}`}>
               {task.status}
             </div>
-
             <div className="flex mt-1 gap-2.5 justify-between p-2">
               <div className="flex items-end font-light">
                 <small className="text-gray-800">
